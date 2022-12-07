@@ -37,8 +37,9 @@ public class LogController {
     {
         DateTimeFormatter dt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        log.setLogout_time((String.valueOf(dt.format(now))));
-        dao.Checkout(log.getLogout_sec_id(), log.getLogout_time(), log.getId());
+        String currentdate= String.valueOf(dt.format(now));
+        log.setLogout_time(currentdate);
+        dao.Checkout(log.getLogout_sec_id(), log.getLogout_time(),log.getStatus(), log.getId());
         return "{Status:'Success'}";
     }
 
@@ -53,6 +54,12 @@ public class LogController {
     @PostMapping(path = "/viewlogbyid",consumes = "application/json",produces = "application/json")
     public List<Map<String,String>> ViewByIdLog(@RequestBody LogModel log){
         return (List<Map<String, String>>) dao.ViewByIdLogs(log.getEmp_id());
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/viewstatus")
+    public List<Map<String,String>> ViewAllCheckin(){
+        return (List<Map<String, String>>) dao.ViewLogByStatus();
     }
 
 }

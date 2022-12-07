@@ -13,7 +13,7 @@ public interface LeaveDao extends CrudRepository<LeaveModel,Integer> {
     @Query(value = "SELECT l.id, l.`apply_date`, l.`date`, l.`duration`, l.`reason`, l.`status`, l.`type`,e.name FROM `leaveform` l JOIN employee e ON e.id=l.emp_id WHERE l.emp_id = :emp_id",nativeQuery = true)
     List<Map<String,String>> viewSingle(Integer emp_id);
 
-    @Query(value = "SELECT l.id, l.`apply_date`, l.`date`, l.`duration`, l.`reason`, l.`status`, l.`type`,e.name FROM `leaveform` l JOIN employee e ON e.id=l.emp_id",nativeQuery = true)
+    @Query(value = "SELECT l.id, l.`apply_date`, l.`date`, l.`duration`, l.`reason`, l.`status`, l.`type`,e.name FROM `leaveform` l JOIN employee e ON e.id=l.emp_id WHERE status=0",nativeQuery = true)
     List<Map<String,String>> ViewAll();
 
     @Modifying

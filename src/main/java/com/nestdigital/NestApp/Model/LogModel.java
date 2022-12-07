@@ -18,17 +18,19 @@ public class LogModel {
     private int logout_sec_id;
     private String login_time;
     private String logout_time;
+    private int status;
 
     public LogModel() {
     }
 
-    public LogModel(int id, int emp_id, int login_sec_id, int logout_sec_id, String login_time, String logout_time) {
+    public LogModel(int id, int emp_id, int login_sec_id, int logout_sec_id, String login_time, String logout_time, int status) {
         this.id = id;
         this.emp_id = emp_id;
         this.login_sec_id = login_sec_id;
         this.logout_sec_id = logout_sec_id;
         this.login_time = login_time;
         this.logout_time = logout_time;
+        this.status = status;
     }
 
     public int getId() {
@@ -77,6 +79,14 @@ public class LogModel {
 
     public void setLogout_time(String logout_time) {
         this.logout_time = logout_time;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
 
